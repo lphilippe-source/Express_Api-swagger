@@ -1,0 +1,203 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "OutilMy documentation",
+        "version": "1.0.0",
+        "title": "API",
+        "contact": {
+            "email": "outilmy@gmail.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        }
+    },
+    "schemes": ["http"],
+    "host": "localhost:8080",
+    "basePath": "/api",
+    "paths" : {
+        "/users/signup" : {
+            "post" : {
+                "summary" : "Signup for client",
+                "tags":["Users"],
+                "description": "Sign-up for client",
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Form Signup",
+                        "required": true,
+                        "schema": {
+                                    "$ref": "#/definitions/SignupRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                                "$ref": "#/definitions/SignupRequest"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/login" : {
+            "post" : {
+                "summary" : "Login for client",
+                "tags":["Users"],
+                "description": "Login for client",
+                "produces": ["application/json"],
+                "consumes": ["application/json"],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Credentials",
+                        "required": true,
+                        "schema": {
+                                    "$ref": "#/definitions/LoginRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                                "$ref": "#/definitions/LoginRequest"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/task/" : {
+            "put" : {
+                "summary" : "Update the tasks",
+                "description": "Update the tasks",
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "task id that needs to be deleted",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "task object",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "task" : {
+                                    "type": "object",
+                                    "$ref": "#/definitions/Task"
+                                } 
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/todosResponse"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/task/{id}" : {
+            "delete" : {
+                "summary" : "Delete the task",
+                "description": "Delete the task",
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "task id that needs to be deleted",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/todosResponse"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            }
+        }
+    }, 
+    "definitions": {
+        "LoginRequest": {
+            "type": "object",
+            "properties": {
+                    "email":{"type":"string"},
+                    "password":{"type":"string"}
+            }
+        },
+        
+
+
+        "SignupRequest": {
+            "type": "object",
+            "properties": {
+                    "id": {"type": "number"},
+                    "firstName": {"type": "string"},
+                    "lastName": {"type": "string"},
+                    "email":{"type":"string"},
+                    "password":{"type":"string"},
+                    "phone":{"type":"string"}
+            }
+        },
+        "InvalidResponse": {
+            "type": "object",
+            "properties": {
+                "statusCode": {
+                    "type": "string"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+
+        }
+    }
+}
