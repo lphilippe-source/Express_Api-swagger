@@ -6,8 +6,6 @@ import bodyParser from "body-parser";
 import { customCss, swaggerDocument } from ".";
 import swaggerUi = require('swagger-ui-express');
 
-
-
 // @ts-ignore
 export const routing = (app) => {
     // Demo
@@ -43,5 +41,4 @@ export const routing = (app) => {
     app.get('/tools/:id', toolsController.findById)
     app.delete('/tools/:id', toolsController.deleteById)
     // app.get('/tools/username/:username', toolsController.findByUsername)
-
 }

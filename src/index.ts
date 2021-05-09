@@ -24,8 +24,6 @@ routing(app)
 
 // init mongoose
 // definie une connexion avec la base de donnée
-// const pass = 'oK9xLnFfpRk&pK19v%*BO@99y7Uk'
-// const user = 'outilMy'
 const USER = process.env.DB_USER
 const PASS = process.env.DB_PASS
 const uri = 'mongodb+srv://' + USER + ':' + PASS + '@cluster0.6d8ty.mongodb.net/outilMy?retryWrites=true&w=majority'
@@ -33,7 +31,6 @@ mongoose.connect(uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
-  // 'mongodb+srv://'+user+':'+pass+'@cluster0.6d8ty.mongodb.net/outilMy?retryWrites=true&w=majority'
   .then(() => {
     console.log('connexion à Mongo réussi')
   })

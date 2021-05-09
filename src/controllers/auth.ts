@@ -8,8 +8,6 @@ export class Auth{
    
    static token:string|null = null
     
-    constructor(){}
-
    static signup = (req,res, next)=>{
         console.log(req.body)
         bcrypt.hash(req.body.password,10)
