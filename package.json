@@ -4,9 +4,9 @@
   "main": "./src/index.ts",
   "scripts": {
     "start": "webpack",
-    "test": "karma start",
     "dev": "webpack-dev-server --inline --hot",
-    "build": "webpack -p"
+    "build": "webpack -p",
+    "test":"jest"
   },
   "author": "",
   "license": "ISC",
@@ -18,12 +18,18 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.9.13",
+    "mongoose": "^5.12.11",
     "nodemon-webpack-plugin": "^4.3.1",
     "rxjs": "^6.5.4",
     "swagger-jsdoc": "^6.0.2",
     "swagger-ui-express": "^4.1.6",
     "webpack-cli": "^3.3.11"
+  },
+"jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ]
   },
   "devDependencies": {
     "@babel/core": "^7.9.6",
@@ -31,16 +37,12 @@
     "@babel/preset-env": "^7.9.6",
     "@types/body-parser": "^1.19.0",
     "@types/express": "^4.17.11",
-    "@types/jasmine": "^3.6.3",
     "@types/mongoose": "^5.7.19",
     "@types/swagger-jsdoc": "^6.0.0",
     "@types/swagger-ui-express": "^4.1.2",
     "babel-loader": "^8.1.0",
-    "jasmine-core": "^3.6.0",
-    "karma": "^6.1.0",
-    "karma-chrome-launcher": "^3.1.0",
-    "karma-jasmine": "^4.0.1",
-    "karma-webpack": "^5.0.0",
+    "jest": "^27.0.1",
+    "supertest": "^6.1.3",
     "ts-loader": "^8.0.15",
     "ts-node": "^9.1.1",
     "typescript": "^3.9.7",
