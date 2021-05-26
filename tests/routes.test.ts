@@ -7,7 +7,8 @@ describe("Post Endpoints", () => {
 			email: "philippelmr@caca.com",
 			password: "pipopipo",
 		})
+		console.log(res.body)
 		expect(res.statusCode).toEqual(200)
-		// expect(res.body).toHaveProperty("post")
+		expect(res.body).toHaveProperty("userId")
 	})
 })
