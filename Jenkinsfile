@@ -1,4 +1,4 @@
-stage('install') {
+stages {
     steps{
         sh 'npm install'
         sh 'npm test'
@@ -7,8 +7,8 @@ stage('install') {
         sh 'npm tar -czf backup.tar.gz dist'
     }
 }
-stage('Publish') {
-    step{
+stages {
+    steps{
         archiveArtifacts artifacts: 'backup.tar.gz', followSymlinks: false
     }
 }
